@@ -1,5 +1,5 @@
-n = 10; %%periods
-m = 100000; %%dots per period
+n = 20; %%periods
+m = 10000; %%dots per period
 %%total of n*m dots
 
 %%Similink simulation 
@@ -19,8 +19,11 @@ wz = 60;
 A = 1;
 Q = 1;
 
-%%frekvency
-omega = [1: 10: 60, 60:10: 120];
+%%frequency
+%%TO run slx1
+%%omega = [1: 10: 60, 60:10: 120];
+%%TO run slx2 and slx3
+omega = [1:5:1/sqrt(L*C), 1/sqrt(L*C):5:2.5/sqrt(L*C)]
 
 Amp = zeros(1, length(omega));
 phase = zeros(1, length(omega));
@@ -30,7 +33,7 @@ for i = 1 : 1 : length(omega)
     deltaT = 2*pi/(w*m);
     duration = n*2*pi/w;
 
-    sim(slx1);
+    sim(slx2);
     
     output = ans.yOut((n-3)*m: end);
     Amp(i) = max(output);
